@@ -27,7 +27,7 @@ class ProductInput extends React.Component<IProps> {
                 maxLength={36}
                 onChange={this.handleTextInputChange}
                 value={this.props.idMember.productId || ''}
-                placeholder="produkte id eingeben..."
+                placeholder="Produkt-id eingeben..."
             />
             <label>Menge: </label>
             <select  onChange={this.handleQuantityChange}>

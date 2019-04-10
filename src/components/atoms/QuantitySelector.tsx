@@ -6,7 +6,6 @@ interface IProps {
 }
 
 class QuantitySelector extends React.Component<IProps> {
-  public props: IProps;
 
   constructor(props: IProps) {
       super(props);

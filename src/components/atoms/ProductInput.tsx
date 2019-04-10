@@ -1,6 +1,6 @@
 import * as React from 'react';
-import fetchProductInfo from 'src/Utilities/fetchProductInfo';
 import {IIdMember} from '../../App';
+import fetchProductInfo from '../../Utilities/fetchProductInfo';
 
 interface IProps {
     idMember: IIdMember;
@@ -10,7 +10,6 @@ interface IProps {
 }
 
 class ProductInput extends React.Component<IProps> {
-  public props: IProps;
 
   public render() {
     return (

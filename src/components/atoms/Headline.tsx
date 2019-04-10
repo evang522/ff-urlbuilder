@@ -6,7 +6,6 @@ interface IProps {
 }
 
 class Headline extends React.Component<IProps> {
-  public props: IProps;
 
   public render() {
     return (

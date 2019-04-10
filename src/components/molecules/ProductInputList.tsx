@@ -10,7 +10,6 @@ interface IProps {
 }
 
 class ProductInputList extends React.Component<IProps> {
-  public props: IProps;
 
   public render() {
     return (

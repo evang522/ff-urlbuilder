@@ -50,15 +50,11 @@ class ProductInput extends React.Component<IProps> {
 
   public handleTextInputChange = async (event: any) => {
     this.props.onChange(event.target.value, this.props.idMember);
-// tslint:disable-next-line: no-console
-    console.log(event.target.value.length);
     if (event.target.value.length === 36) {
       try {
       const product = await fetchProductInfo(event.target.value);
       this.props.setProductVerified(this.props.idMember, true, product)
       } catch (e) {
-// tslint:disable-next-line: no-console
-        console.log(e);
         this.props.setProductVerified(this.props.idMember, false)
       }
     } else {

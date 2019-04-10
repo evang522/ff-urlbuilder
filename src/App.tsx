@@ -26,8 +26,6 @@ class App extends React.Component {
   }
 
   public render() {
-// tslint:disable-next-line: no-console
-    console.log(this.state);
     return (
       <div className="App">
         <Headline text="Fitfox Checkout URL Builder" />
@@ -50,8 +48,6 @@ class App extends React.Component {
   }
 
   public handleProductSelectorInputChange = (value: string, idMember: IIdMember) => {
-
-    // .sort((a: IIdMember,b: IIdMember) => (Number(a.uuid) - Number(b.uuid))),
     const newArr = [...this.state.idList.filter((idMemberInState: IIdMember) => idMemberInState.uuid !== idMember.uuid ),
       {...idMember, productId: value}];
     this.setState({
@@ -87,8 +83,6 @@ class App extends React.Component {
   }
 
   public setProductVerified = (idMember: IIdMember, status: boolean, product?: any): void => {
-// tslint:disable-next-line: no-console
-console.log('called');
     const newArr = [...this.state.idList.filter((idMemberInState: IIdMember) => idMemberInState.uuid !== idMember.uuid ),
       {
         ...idMember,

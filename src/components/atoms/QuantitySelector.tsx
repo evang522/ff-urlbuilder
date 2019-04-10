@@ -34,8 +34,6 @@ class QuantitySelector extends React.Component<IProps> {
   }
 
   public handleSelectChange = (event: any) => {
-// tslint:disable-next-line: no-console
-      console.log(this);
     this.props.onChange(event.target.value);
   }
 }

@@ -13,8 +13,6 @@ class ProductInputList extends React.Component<IProps> {
   public props: IProps;
 
   public render() {
-// tslint:disable-next-line: no-console
-    console.log(this.props);
     return (
         <div style={{
           alignContent: 'center',

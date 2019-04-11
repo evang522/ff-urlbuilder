@@ -83,11 +83,22 @@ class App extends React.Component {
   }
 
   public setProductVerified = (idMember: IIdMember, status: boolean, product?: any): void => {
+    let productTitle: string = '';
+    if (product) {
+      if (product.discriminator === 'event') {
+          productTitle = `${product.eventOccurrence.name} - ${product.name} - Product Type:  ${product.discriminator}`; 
+      }
+
+      if (product.discriminator === 'studio') {
+        productTitle = `${product.studio.name} - ${product.name} - Product Type:  ${product.discriminator}`; 
+      }
+    }
+
     const newArr = [...this.state.idList.filter((idMemberInState: IIdMember) => idMemberInState.uuid !== idMember.uuid ),
       {
         ...idMember,
         verified: status,
-        ...(product && {productTitle:`${product.eventOccurrence && product.eventOccurrence.name || product.studio.name} - ${product.name} - Product Type:  ${product.discriminator}` }) 
+        ...(product && {productTitle}) 
       }];
     this.setState({
       idList: [

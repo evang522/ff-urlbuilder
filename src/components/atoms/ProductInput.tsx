@@ -53,7 +53,9 @@ class ProductInput extends React.Component<IProps> {
       try {
       const product = await fetchProductInfo(event.target.value);
       this.props.setProductVerified(this.props.idMember, true, product)
-      } catch (e) {
+      } catch (e) {;
+      // tslint:disable-next-line: no-console
+        console.log(e, 'error')
         this.props.setProductVerified(this.props.idMember, false)
       }
     } else {

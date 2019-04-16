@@ -1,6 +1,6 @@
 import { IIdMember } from './../App';
 const calculateUrl = (idList: IIdMember[], baseUrl: string): string => {
-    let url: string = `https:/www.${baseUrl === 'https://www.staging.v2.fitfox.de' ? 'staging.' : ''}fitfox.de/checkout/?`
+    let url: string = `https://www.${baseUrl === 'https://www.staging.v2.fitfox.de' ? 'staging.' : ''}fitfox.de/checkout/?`
     if (!idList.length) {
         return '';
     }

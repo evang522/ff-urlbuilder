@@ -1,9 +1,9 @@
-const baseProductApiUrl = 'https://www.v2.fitfox.de/api/product/';
-const baseEventOccurrenceApiUrl = 'https://www.v2.fitfox.de/api/eventoccurrence/';
-const baseStudioOccurrenceApiUrl = 'https://www.v2.fitfox.de/api/studio/';
+const productUrlPath = '/api/product/';
+const eventOccurrenceUrlPath = '/api/eventoccurrence/';
+const studioUrlPath = '/api/studio/';
 
-const fetchProductInfo = async (id: string): Promise<any> => {
-    const apiUrl: string = baseProductApiUrl + id;
+const fetchProductInfo = async (id: string, baseUrl: string): Promise<any> => {
+    const apiUrl: string = baseUrl + productUrlPath + id;
     const rawResponse = await fetch(apiUrl);
     const product = await rawResponse.json();
 
@@ -12,12 +12,12 @@ const fetchProductInfo = async (id: string): Promise<any> => {
     }
 
     if (product.eventOccurrence) {
-        const rawEventOccurrenceResponse = await fetch(baseEventOccurrenceApiUrl + product.eventOccurrence.id);
+        const rawEventOccurrenceResponse = await fetch(baseUrl + eventOccurrenceUrlPath + product.eventOccurrence.id);
         const eventOccurrence = await rawEventOccurrenceResponse.json();
         product.eventOccurrence = eventOccurrence;
         return product;
     } else {
-        const rawStudioResponse = await fetch(baseStudioOccurrenceApiUrl + product.studio.id);
+        const rawStudioResponse = await fetch(baseUrl + studioUrlPath + product.studio.id);
         const studio = await rawStudioResponse.json();
         product.studio = studio;
         return product;

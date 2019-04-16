@@ -7,6 +7,7 @@ interface IProps {
     onChange: (value: string, idMember: IIdMember) => void;
     setProductVerified: (idMember: IIdMember, status: boolean) => void;
     setProductQuantity: (idMember: IIdMember, quantity: number) => void;
+    baseUrl: string;
 }
 
 class ProductInputList extends React.Component<IProps> {
@@ -35,6 +36,7 @@ class ProductInputList extends React.Component<IProps> {
             key={index}
             idMember={idMember}
             setProductQuantity={this.props.setProductQuantity}
+            baseUrl={this.props.baseUrl}
           />
       )})
   }

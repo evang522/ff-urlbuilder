@@ -7,6 +7,7 @@ interface IProps {
     onChange: (value: string, idMember: any) => void;
     setProductVerified: (idMember: IIdMember, status: boolean, product?: any) => void;
     setProductQuantity: (idMember: IIdMember, quantity: number) => void;
+    baseUrl: string;
 }
 
 class ProductInput extends React.Component<IProps> {
@@ -51,7 +52,7 @@ class ProductInput extends React.Component<IProps> {
     this.props.onChange(event.target.value, this.props.idMember);
     if (event.target.value.length === 36) {
       try {
-      const product = await fetchProductInfo(event.target.value);
+      const product = await fetchProductInfo(event.target.value, this.props.baseUrl);
       this.props.setProductVerified(this.props.idMember, true, product)
       } catch (e) {;
       // tslint:disable-next-line: no-console

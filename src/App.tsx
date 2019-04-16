@@ -9,6 +9,7 @@ import calculateUrl from './Utilities/calculateUrl';
 interface IState {
   desiredIdCount: number;
   idList: IIdMember[];
+  baseUrl: string;
 }
 
 export interface IIdMember {
@@ -21,30 +22,44 @@ export interface IIdMember {
 
 class App extends React.Component {
   public state: IState = {
+    baseUrl: 'https://www.v2.fitfox.de',
     desiredIdCount: 0,
     idList: [],
   }
-
+// tslint:disable: jsx-no-lambda
   public render() {
     return (
       <div className="App">
         <Headline text="Fitfox Checkout URL Builder" />
+        <select onChange={e => this.setBaseUrl(e.target.value)}>
+          <option value="https://www.v2.fitfox.de">Production</option>
+          <option value="https://www.staging.v2.fitfox.de">Staging</option>
+        </select>
         <QuantitySelector desiredIdCount={this.state.desiredIdCount} onChange={this.handleProductCountChange}/>
         <ProductInputList
           idList={this.state.idList}
           onChange={this.handleProductSelectorInputChange}
           setProductVerified={this.setProductVerified}
           setProductQuantity={this.setProductQuantity}
+          baseUrl={this.state.baseUrl}
         />
         <br/>
         <br/>
         <div style={{width: '80%', margin: '0 auto'}}>
-        <a href={calculateUrl(this.state.idList)} target="_blank" rel="noreferrer">
-          {calculateUrl(this.state.idList)}
+        <a href={calculateUrl(this.state.idList, this.state.baseUrl)} target="_blank" rel="noreferrer">
+          {calculateUrl(this.state.idList, this.state.baseUrl)}
         </a>
         </div>
       </div>
     );
+  }
+
+  public setBaseUrl = (url: string) => {
+    this.setState({
+      baseUrl: url,
+      desiredIdCount: 0,
+      idList: [],
+    })
   }
 
   public handleProductSelectorInputChange = (value: string, idMember: IIdMember) => {
